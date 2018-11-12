@@ -92,7 +92,7 @@
 
       filterContent: (searchedText) => {
 
-        var j = 0,
+        let j = 0,
             results = 0,
             searchName = "name",
             searchEmail = "email",
@@ -122,7 +122,7 @@
 
       resetFilter: () => {
 
-        var cards = document.getElementsByClassName('users__content').length,
+        let cards = document.getElementsByClassName('users__content').length,
             nodes = document.getElementById('js-content').childNodes;
 
         for (let i=0; i < cards; i++) {
