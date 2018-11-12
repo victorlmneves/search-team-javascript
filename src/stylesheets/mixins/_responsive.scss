@@ -1,0 +1,77 @@
+@mixin respond-to($breakpoint) { // from http://www.sitepoint.com/managing-responsive-breakpoints-sass/
+  $value: map-get($breakpoints, $breakpoint);
+
+  @if $value != null {
+    @media print, (min-width: $value) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+@mixin respond-up-to($breakpoint) {
+  $value: map-get($breakpoints, $breakpoint) - 1;
+
+  @if $value != null {
+    @media print, (max-width: $value) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+@mixin on-mobile {
+  @include respond-up-to(small) {
+    @content;
+  }
+}
+
+@mixin responsive-style-classes($breakpoint-keys: map-keys($breakpoints), $include-default: true) {
+  @if($include-default) {
+    @content;
+  }
+
+  @each $key in $breakpoint-keys {
+    @if map-has-key($breakpoints, $key) {
+      &\@#{$key}- {
+        @include respond-up-to(#{$key}) {
+          @content;
+        }
+      }
+
+      &\@#{$key}\+ {
+        @include respond-to(#{$key}) {
+          @content;
+        }
+      }
+    } @else {
+      @warn "Unfortunately, no breakpoint key could be found for `#{$key}`. "
+        + 'Please make sure it is defined in `$breakpoints` map.';
+    }
+  }
+}
+
+@mixin responsive-display-classes($breakpoint-keys: map-keys($breakpoints)) {
+  @each $key in $breakpoint-keys {
+    @if map-has-key($breakpoints, $key) {
+      &\@#{$key}- {
+        @include respond-to(#{$key}) {
+          display: none;
+        }
+      }
+
+      &\@#{$key}\+ {
+        @include respond-up-to(#{$key}) {
+          display: none;
+        }
+      }
+    } @else {
+      @warn "Unfortunately, no breakpoint key could be found for `#{$key}`. "
+        + 'Please make sure it is defined in `$breakpoints` map.';
+    }
+  }
+}

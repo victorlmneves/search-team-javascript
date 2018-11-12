@@ -1,0 +1,12 @@
+.no-results {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  &__msg {
+    font-size: 2rem;
+    font-weight: $font-weight-light;
+  }
+}

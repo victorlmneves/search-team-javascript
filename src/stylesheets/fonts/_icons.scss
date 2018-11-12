@@ -1,0 +1,43 @@
+$icons-font-path: "../fonts/Icons";
+
+@font-face {
+  font-family: $font-icons;
+  src:  url('#{$icons-font-path}/icons.eot?lcgmzt');
+  src:  url('#{$icons-font-path}/icons.eot?lcgmzt#iefix') format('embedded-opentype'),
+    url('#{$icons-font-path}/icons.ttf?lcgmzt') format('truetype'),
+    url('#{$icons-font-path}/icons.woff?lcgmzt') format('woff'),
+    url('#{$icons-font-path}/icons.svg?lcgmzt#icomoon') format('svg');
+  font-weight: $font-weight-regular;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: $font-weight-regular;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-user:before {
+  content: "\e900";
+}
+
+.icon-search:before {
+  content: "\e901";
+}
+
+.icon-location:before {
+  content: "\e902";
+}
+
+.icon-phone:before {
+  content: "\e903";
+}
