@@ -11,18 +11,15 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     runSequence = require('run-sequence'),
     webserver = require('gulp-webserver'),
-    webserver = require('gulp-webserver'),
     prettyError = require('gulp-prettyerror'),
     del = require('del');
 
 // directories
 var appDir = "dist",
-    mainDir = "/",
     assetsDir = appDir + '/assets/',
     sourceDir = 'src/',
     sassFiles = sourceDir + 'stylesheets/',
     fontsFiles = sourceDir + 'fonts/',
-    imgFiles = sourceDir + 'img/',
     cssAssetsDir = assetsDir + 'css/',
     jsAssetsDir = assetsDir + 'js/',
     jsFiles = [
